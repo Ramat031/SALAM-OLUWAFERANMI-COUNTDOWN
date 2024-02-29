@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opening Soon Countdown Timer</title>
+    <style>
+            body{
+                background-image: url("newimg.jpg");
+                background-size:cover;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 100vh;
+                font-family: Arial, Helvetica, sans-serif;
+                background-repeat: no-repeat;
+            }
+
+            .countdown-container{
+                text-align: left;
+                margin-left: 20px;
+                margin-top: 400px;
+            }
+
+            .countdown{
+                font-size: 24px;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .countdown span{
+                display: inline-block;
+                padding: 10px;
+                background-color:burlywood;
+                color: brown;
+                margin: 0 5px;
+            }
+            .brand-description{
+                font-size: 20px;
+                margin-top: 10px;
+                font-weight: bold;
+                font-family:verdana;
+            }
+            h1{
+                margin-bottom: 10px;
+            }
+            a{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 18px;
+                color: brown;
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            .more-info{
+                font-size: 20px;
+                color:antiquewhite;
+            }
+            h1{
+                color:brown;
+            }
+
+        
+
+    
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>OPENING SOON!</h1>
+        <div class="countdown">
+            <span id="days"></span>
+            <span id="hours"></span>
+            <span id="minutes"></span>
+            <span id="seconds"></span>
+        </div>
+    <p class="brand-description">
+        Welcome to Rahmat's collection! We strive to provide innovative solutions to our 
+    </p>
+
+    <p class="brand-description">
+        customer and deliver exceptional experiences,stay tuned for our grand opening!
+
+    </p>
+
+    <p class="more-info">Check out our<a href="https://instagram.com" target="_blank">website</a>for more information</p>
+    </div>
+
+    <script>
+        // Set the opening date and time
+        const openingDate = new Date("2022-01-01T00:00:00Z");
+
+        // Update the countdown every second
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = openingDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById("days").textContent = days + "d";
+            document.getElementById("hours").textContent = hours + "h";
+            document.getElementById("minutes").textContent = minutes + "m";
+            document.getElementById("seconds").textContent = seconds + "s";
+
+            // If the countdown is finished, display a message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").textContent = "3d";
+                document.getElementById("hours").textContent = "5h";
+                document.getElementById("minutes").textContent = "5m";
+                document.getElementById("seconds").textContent = "20s";
+                document.querySelector("h1").textContent = "OPENING SOON!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
